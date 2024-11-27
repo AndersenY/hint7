@@ -46,17 +46,29 @@
             font-size: 1.2rem;
             margin: 0;
             font-weight: 600;
+            display: none; /* Скрываем текст по умолчанию */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Подсказка №1</h1>
-        <video controls>
+        <video id="video" controls>
             <source src="123.mp4" type="video/mp4">
             Ваш браузер не поддерживает видео. Пожалуйста, обновите браузер.
         </video>
-        <p>а теперь пиздуй дальше на поиски</p>
+        <p id="hidden-text">а теперь пиздуй дальше на поиски</p>
     </div>
+
+    <script>
+        // Получаем элементы видео и текста
+        const video = document.getElementById('video');
+        const hiddenText = document.getElementById('hidden-text');
+
+        // Добавляем слушатель события окончания видео
+        video.addEventListener('ended', () => {
+            hiddenText.style.display = 'block'; // Показываем текст
+        });
+    </script>
 </body>
 </html>
